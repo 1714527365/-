@@ -1,0 +1,202 @@
+ <!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./css/index.css">
+        <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+        <title>春纳报名表</title>
+    </head>
+    <script src="https://cdn.bootcss.com/vue/2.5.18-beta.0/vue.js"></script>
+    <script src="https://cdn.bootcss.com/vue-resource/1.5.1/vue-resource.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <body onload="hideothers()">
+        <div class="window">
+        <form @submit.prevent="submit">
+                <div class="window1">
+                    <div class="title-11">
+                        <h1>浙大勤创春纳报名表</h1>
+                    </div>
+                    <hr>
+                    <div class="title-12">
+                        <h1>“来者何人！”</h1>
+                    </div>
+                    <div class="title-13">
+                        Pioneering And Partwork-study Istructing Center
+                    </div>
+                    <div class="subhead-1">
+                        <h3>1.基本信息填写</h3>
+                    </div>
+                    <div class="firstpage">
+                        <p>姓名<input type="text" name="name" class="form-name" v-model="user.name"></p>
+                        <p>生日<input type="text" name="birthday" class="form-birthday" v-model="user.birthday"></p>
+                        <p>性别<input type="text" name="gender" class="form-gender" v-model="user.gender"></p>
+                        <p>行政班级<input type="text" name="class" class="form-class" v-model="user.class"></p>
+                        <p>专业<input type="text" name="major" class="form-major" v-model="user.major"></p>
+                        <p>学号<input type="text" name="studentID" class="form-studentID" v-model="user.studentID"></p>
+                        <p>寝室号<input type="text" name="dormitory" class="form-dormitory" v-model="user.dormitory"></p>
+                        <p>QQ<input type="text" name="QQ" class="form-QQ" v-model="user.QQ"></p>
+                        <p>微信<input type="text" name="Wechat" class="form-Wechat" v-model="user.Wechat"></p>
+                        <p>邮箱<input type="text" name="mailbox" class="form-mailbox" v-model="user.mailbox"></p>
+                        <p>手机<input type="text" name="phone" class="form-phone" v-model="user.phone"></p>
+                        <p>个人照片上传(还没写)</p>
+                        <textarea rows="7" cols="30" v-model="user.reasons"></textarea>
+                        <div class="nextpagebtn">
+                            <input type="button" value="下一页" class="nextpage1" onClick="nextpage1()">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="window2">
+                    <div class="title-21">
+                        <h2>浙大勤创春纳报名表</h2>
+                    </div>
+                    <hr>
+                    <div class="title-22">
+                        <h2>“来者何人！”</h2>
+                    </div>
+                    <div class="title-23">
+                        Pioneering And Partwork-study Istructing Center
+                    </div>
+                    <div class="subhead-2">
+                        <h3>个人介绍</h3>
+                    </div>
+                        <div class="selfintroduction">
+                            <p>①请用三个词形容自己</p>
+                            <input type="text" name="self-1" class="form-self1" v-model="user.self1">
+                            <input type="text" name="self-2" class="form-self" v-model="user.self2">
+                            <input type="text" name="self-3" class="form-self" v-model="user.self3">
+                        </div>
+                        <div class="speciality">
+                            <p>②请勾选你的特长（x）</p>
+                        </div>
+                        <div class="selfscore">
+                            <p>③请你根据客观情况对自己的以下五个能力打分</p>
+                            <p class="score">12345</p>
+                            <p class="ability">亲和力</p>
+                            <p class="ability">领导力</p>
+                            <p class="ability">创新力</p>
+                            <p class="ability">沟通力</p>
+                            <p class="ability">适应力</p>
+                        </div>
+                        <div class="experience0">
+                            <p>④大一上学期有加入其他社团组织么</p>
+                            <input type="checkbox">有
+                            <input type="checkbox">没有
+                        </div>
+                        <div class="experiences">
+                            <p>⑤请问你加入了哪些社团组织</p>
+                            <textarea rows="4" cols="30" v-model="user.experiences"></textarea>
+                        </div>
+                        <div class="share">
+                            <p>⑥能和我们分享一件上学期在社团/组织中印象最深刻的一件事情吗？</p>
+                            <textarea rows="4" cols="30" v-model="user.share"></textarea>
+                        </div>
+                        <div class="fruits">
+                            <p>⑦请问你觉得加入勤创可以获得哪些收获呢？</p>
+                            <textarea rows="4" cols="30" v-model="user.fruits"></textarea>
+                        </div>
+                        <div class="nextpagebtn">
+                                <input type="button" value="下一页" class="nextpage2" onClick="nextpage2()">
+                            </div>
+                </div>
+
+                <div class="window3">
+                    <div class="title-31">
+                            <h2>浙大勤创春纳报名表</h2>
+                        </div>
+                        <hr>
+                        <div class="title-32">
+                            <h2>“来者何人！”</h2>
+                        </div>
+                        <div class="title-33">
+                            Pioneering And Partwork-study Istructing Center
+                        </div>
+                        <div class="subhead-3">
+                            <h3>3.部门选择</h3>
+                        </div>
+                        <div>
+                            <p>请选择你想加入的心仪部门（最多两个）并</br>简要阐述一下原因</p>
+                            <p>（注：如果有两个志愿，请进行选择并分开讲述原因）</p>
+                        </div>
+                        <div class="choice">
+                            <p><input type="checkbox" v-model="user.bgs">办公室</p>
+                            <p><input type="checkbox" v-model="user.waituo">对外拓展部</p>
+                            <p><input type="checkbox">技术推广部（<input type="checkbox" v-model="user.meigong">美工组<input type="checkbox" v-model="user.jishu">技术组二选一）</p>
+                            <p><input type="checkbox" v-model="user.jianguan">兼职管理部</p>
+                            <p><input type="checkbox" v-model="user.pingong">品牌公关部</p>
+                            <p><input type="checkbox" v-model="user.renzi">人力资源部</p>
+                            <p><input type="checkbox" v-model="user.chuangzhi">创业实践指导部</p>
+                            <p>原因</p>
+                            <textarea rows="7" cols="30" v-model="user.reasons"></textarea>
+                        </div>
+                        <div class="subhead-4">
+                                <h3>请问你有什么话想对勤创说吗？</h3>
+                                <textarea rows="5" cols="30" v-model="user.words"></textarea>
+                        </div>
+                        <div class="finish words">
+                            <p>至此你已经完成了勤创春纳报名表的填写</p>
+                            <p>如有疑问，请联系13372554322蔡同学</p>
+                            <p>浙大勤创再一次感谢您的参与</p>
+                        </div>
+                        <div class="submitbtn">
+                            <input type="submit" value="提交">
+                        </div>
+                </div>
+                </form>
+            </div>
+    </body>
+
+        <script>
+            export default {
+                name: 'window',
+                data () {
+                    return {
+                        user: {
+                            name: '',
+                            birthday: '',
+                            gender: '',
+                            class: '',
+                            major: '',
+                            studentID: '',
+                            dormitory: '',
+                            QQ: '',
+                            Wechat: '',
+                            mailbox: '',
+                            phone: '',
+                            self1:'',
+                            self2:'',
+                            self3:'',
+                            experiences:'',
+                            share:'',
+                            fruits:'',
+                            bgs:'',
+                            waituo:'',
+                            meigong:'',
+                            jishu:'',
+                            jianguan:'',
+                            pingong:'',
+                            renzi:'',
+                            chuangzhi:'',
+                            reasons:'',
+                            words:'',
+                        }
+                    }
+                },
+                methods:{
+                    submit: function() {
+                        var formData = JSON.stringify(this.user);
+                        this.$http.post('/admin/', formData).then((response) => {
+                            // success callback
+                        }, (response) => {
+                            // error callback
+                        });
+                    }
+                }
+            }
+        </script>
+
+</html>
